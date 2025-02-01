@@ -1,16 +1,7 @@
-package com.leon.wechat
-
-class User {
+data class User(
+    var uid: String? = null,
+    var email: String? = null,
     var name: String? = null
-    var email: String? = null
-    var uid: String? = null
-
-
-    constructor(name: String?,email:String?,uid: String?){
-        this.name = name
-        this.email = email
-        this.uid = uid
-    }
-
-    constructor(): this("","","")
+) {
+    constructor() : this("", "","")
 }
