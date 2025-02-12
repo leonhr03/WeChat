@@ -1,13 +1,16 @@
 package com.leon.wechat
 
+import User
 import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -33,10 +36,12 @@ class AccountActivity : AppCompatActivity() {
 
 
 
+
+
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.Chat -> {
-                    val intent = Intent(this, AccountActivity::class.java)
+                    val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     true
                 }
@@ -54,6 +59,22 @@ class AccountActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
+        mDbRf.child("user").addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (postSnapshot in snapshot.children) {
+                    val currentUser = postSnapshot.getValue(User::class.java)
+                     if (currentUser != null) {
+                         tvUser.text = currentUser.name.toString()
+                        }
+
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
 
 
 

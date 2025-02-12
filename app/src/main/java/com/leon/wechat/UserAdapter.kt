@@ -1,5 +1,6 @@
 package com.leon.wechat
 
+import User
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater

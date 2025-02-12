@@ -1,0 +1,6 @@
+AccountActivity:
+- tvUser auf currentuser value setzen
+
+
+TweetActivity:
+- Recyclerview hinzufügen

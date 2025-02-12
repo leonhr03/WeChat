@@ -1,5 +1,6 @@
 package com.leon.wechat
 
+import User
 import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
@@ -66,11 +67,13 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
-                R.id.Home ->{
-                    val intent = Intent(this,TweetActivity::class.java)
+                R.id.Home -> {
+                    val intent = Intent(this, TweetActivity::class.java)
                     startActivity(intent)
-                   true
+                    true
                 }
+
+
 
                 R.id.Account -> {
                     // Wechsle zu SearchActivity
@@ -93,7 +96,6 @@ class MainActivity : AppCompatActivity() {
 
         mDbRf.child("user").addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                userList.clear()
                 for (postSnapshot in snapshot.children){
                     val currentUser = postSnapshot.getValue(User::class.java)
 

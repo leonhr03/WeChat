@@ -26,7 +26,6 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var messageRecyclerView: RecyclerView
     private lateinit var messageBox : EditText
     private lateinit var sendButton : Button
-   // private lateinit var backButton: ImageView
     private lateinit var messageAdapter: messageAdapter
     private lateinit var messageList: ArrayList<Message>
     private lateinit var mDbRf: DatabaseReference
