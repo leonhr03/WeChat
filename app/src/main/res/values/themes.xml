@@ -6,5 +6,10 @@
         <item name="colorAccent">@color/black</item>
     </style>
 
+    <style name="MyThemeOverlay_Toolbar" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <!-- color used by navigation icon and overflow icon -->
+        <item name="colorOnPrimary">@color/black</item>
+    </style>
+
 
 </resources>

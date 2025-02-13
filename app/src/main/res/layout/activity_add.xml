@@ -5,52 +5,69 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddActivity">
+    tools:context=".AddActivity"
+    android:fitsSystemWindows="true">
 
-    <TextView
-        android:id="@+id/app_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add"
-        android:textColor="@color/white"
-
-        android:textSize="24dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"/>
-
-
-    <EditText
-        android:id="@+id/edtTitle"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/app_logo"
-        android:background="@drawable/edt_background"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginRight="28dp"
-        android:padding="10dp"
-        android:hint="Title"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/toolbar_bckgrd"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextColor="@android:color/white" />
+
+        <EditText
+            android:id="@+id/edtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/toolbar"
+            android:background="@drawable/edt_background"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:padding="10dp"
+            android:hint="Title"
+            tools:ignore="NotSibling" />
 
 
-    <EditText
-        android:id="@+id/edttweet"
+        <EditText
+            android:id="@+id/edttweet"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/edtTitle"
+            android:background="@drawable/edt_background"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:padding="10dp"
+            android:hint="Tweet Inhalt"/>
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edttweet"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Add"/>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/edtTitle"
-        android:background="@drawable/edt_background"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginRight="28dp"
-        android:padding="10dp"
-        android:hint="Tweet Inhalt"/>
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edttweet"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Add"/>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu"
+            android:background="@drawable/edt_background"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

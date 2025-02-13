@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.*
+import tweetClass
 
 class TweetActivity : AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var mDbRf: DatabaseReference
-    private lateinit var tweetList: MutableList<tweetClass>
+    private lateinit var tweetList: ArrayList<tweetClass>
     private lateinit var recyclerView: RecyclerView
     private lateinit var tweetAdapter: ItemAdapter
 
@@ -33,23 +34,30 @@ class TweetActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         // Adapter mit leerer Liste initialisieren
-        tweetList = mutableListOf()
+        tweetList = ArrayList()
         tweetAdapter = ItemAdapter(tweetList)
         recyclerView.adapter = tweetAdapter
 
-        bottomNavigationView.selectedItemId = R.id.Account
+        bottomNavigationView.selectedItemId = R.id.Home
         mDbRf = FirebaseDatabase.getInstance().getReference("tweets")
 
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.Chat -> {
-                    startActivity(Intent(this, MainActivity::class.java))
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(intent)
                     true
                 }
+
                 R.id.Home -> true
-                R.id.Account -> {
-                    startActivity(Intent(this, AccountActivity::class.java))
+
+                R.id.Add -> {
+                    val intent = Intent(this, AddActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(intent)
                     true
+
                 }
                 else -> false
             }
@@ -79,16 +87,4 @@ class TweetActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.tweet_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.add) {
-            startActivity(Intent(this, AddActivity::class.java))
-            return true
-        }
-        return true
-    }
 }

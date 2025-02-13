@@ -69,15 +69,17 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.Home -> {
                     val intent = Intent(this, TweetActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent)
                     true
                 }
 
 
 
-                R.id.Account -> {
+                R.id.Add -> {
                     // Wechsle zu SearchActivity
-                    val intent = Intent(this, AccountActivity::class.java)
+                    val intent = Intent(this, AddActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent)
                     true
 
